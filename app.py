@@ -10,50 +10,58 @@ st.set_page_config(page_title="Energy Level Tracker", layout="centered", initial
 
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&display=swap');
+    /* Importing Playfair Display (Titles) and Fira Code (Body) */
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
     
     .stApp { 
         background-color: #F4EBE1; 
         color: #33221A; 
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Fira Code', monospace;
     }
+    
+    /* ALL TITLES & HEADERS */
     h1, h2, h3 {
-        font-family: 'Montserrat', sans-serif; 
+        font-family: 'Playfair Display', serif !important; 
         color: #33221A !important;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        font-weight: 600;
+        text-transform: none;
+        letter-spacing: 0.5px;
+        font-weight: 700;
     }
+    
+    /* MAIN APP TITLE SPECIFICS */
     h1.app-title {
-        font-family: 'Alex Brush', cursive !important;
-        font-size: 5.5rem !important;
-        font-weight: 400 !important;
-        text-transform: none !important;
-        letter-spacing: 2px !important;
-        margin-bottom: -20px !important;
+        font-size: 4.5rem !important;
+        font-weight: 800 !important;
+        margin-bottom: -15px !important;
         text-align: center !important;
     }
+    
+    /* ALL SUBTEXT & BODY (FIRA CODE) */
     .app-subtitle {
         text-align: center !important; 
-        font-family: 'Montserrat', sans-serif !important; 
-        font-weight: 600 !important;
+        font-family: 'Fira Code', monospace !important; 
+        font-weight: 500 !important;
         text-transform: uppercase !important;
         letter-spacing: 3px !important; 
-        font-size: 1.2rem !important; 
+        font-size: 1rem !important; 
         color: #33221A !important; 
         margin-top: 0px !important; 
         margin-bottom: 40px !important;
     }
     .stTextInput>div>div>input, .stTextArea>div>div>textarea {
         background-color: #FAFCF5; border: 1px solid #D1C7BD; color: #33221A;
+        font-family: 'Fira Code', monospace !important;
     }
     .stButton>button { 
         background-color: #33221A; color: #F4EBE1; border-radius: 4px; 
-        font-family: 'Montserrat', sans-serif; font-weight: 500; text-transform: uppercase; border: none;
+        font-family: 'Fira Code', monospace !important; 
+        font-weight: 600; text-transform: uppercase; border: none;
     }
     .stButton>button:hover { background-color: #5A4435; color: #FFF; }
-    label, .stSlider>div>div>div>div {
-        color: #33221A !important; font-family: 'Montserrat', sans-serif; font-weight: 500;
+    label, .stSlider>div>div>div>div, p {
+        color: #33221A !important; 
+        font-family: 'Fira Code', monospace !important; 
+        font-weight: 400;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -237,7 +245,7 @@ with tab_schedule:
             xaxis={'showgrid': False},
             plot_bgcolor='rgba(0,0,0,0)',
             paper_bgcolor='rgba(0,0,0,0)',
-            font={'family': 'Montserrat', 'color': '#33221A'}
+            font={'family': 'Fira Code', 'color': '#33221A'} # Updated Plotly to match Fira Code!
         )
         st.plotly_chart(fig, use_container_width=True)
     else:
