@@ -10,7 +10,7 @@ st.set_page_config(page_title="Energy Level Tracker", layout="centered", initial
 
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap');
     
     .stApp { 
         background-color: #F4EBE1; 
@@ -18,17 +18,31 @@ st.markdown("""
         font-family: 'Montserrat', sans-serif;
     }
     h1, h2, h3 {
-        font-family: 'Cormorant Garamond', serif;
+        font-family: 'Montserrat', sans-serif; /* Clean, modern headers */
         color: #33221A !important;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
+        font-weight: 600;
     }
     .app-title {
-        text-align: center; font-size: 3rem; font-weight: 600; margin-bottom: 0px; padding-bottom: 0px;
+        text-align: center; 
+        font-family: 'Great Vibes', cursive; /* Elegant cursive font */
+        font-size: 5rem; /* Made larger to give the cursive impact */
+        font-weight: 400; 
+        text-transform: none; /* Keeps the natural cursive casing */
+        margin-bottom: -15px; /* Pulls the subtitle closer for that layered look */
+        padding-bottom: 0px;
     }
     .app-subtitle {
-        text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; text-transform: lowercase;
-        font-size: 1.5rem; color: #5A4435; margin-top: -15px; margin-bottom: 30px;
+        text-align: center; 
+        font-family: 'Montserrat', sans-serif; /* The simpler font */
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 3px; /* Spaced out for that high-end editorial feel */
+        font-size: 1.2rem; 
+        color: #33221A; 
+        margin-top: 0px; 
+        margin-bottom: 40px;
     }
     .stTextInput>div>div>input, .stTextArea>div>div>textarea {
         background-color: #FAFCF5; border: 1px solid #D1C7BD; color: #33221A;
@@ -45,7 +59,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- HEADER ---
-st.markdown("<h1 class='app-title'>ENERGY LEVEL TRACKER</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='app-title'>Energy Level Tracker</h1>", unsafe_allow_html=True)
 st.markdown("<div class='app-subtitle'>by minh</div>", unsafe_allow_html=True)
 
 # --- STATE MANAGEMENT ---
