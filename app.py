@@ -10,7 +10,7 @@ st.set_page_config(page_title="Energy Level Tracker", layout="centered", initial
 
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&display=swap');
     
     .stApp { 
         background-color: #F4EBE1; 
@@ -18,31 +18,31 @@ st.markdown("""
         font-family: 'Montserrat', sans-serif;
     }
     h1, h2, h3 {
-        font-family: 'Montserrat', sans-serif; /* Clean, modern headers */
+        font-family: 'Montserrat', sans-serif; 
         color: #33221A !important;
         text-transform: uppercase;
         letter-spacing: 1.5px;
         font-weight: 600;
     }
-    .app-title {
-        text-align: center; 
-        font-family: 'Great Vibes', cursive; /* Elegant cursive font */
-        font-size: 5rem; /* Made larger to give the cursive impact */
-        font-weight: 400; 
-        text-transform: none; /* Keeps the natural cursive casing */
-        margin-bottom: -15px; /* Pulls the subtitle closer for that layered look */
-        padding-bottom: 0px;
+    h1.app-title {
+        font-family: 'Alex Brush', cursive !important;
+        font-size: 5.5rem !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        letter-spacing: 2px !important;
+        margin-bottom: -20px !important;
+        text-align: center !important;
     }
     .app-subtitle {
-        text-align: center; 
-        font-family: 'Montserrat', sans-serif; /* The simpler font */
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 3px; /* Spaced out for that high-end editorial feel */
-        font-size: 1.2rem; 
-        color: #33221A; 
-        margin-top: 0px; 
-        margin-bottom: 40px;
+        text-align: center !important; 
+        font-family: 'Montserrat', sans-serif !important; 
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 3px !important; 
+        font-size: 1.2rem !important; 
+        color: #33221A !important; 
+        margin-top: 0px !important; 
+        margin-bottom: 40px !important;
     }
     .stTextInput>div>div>input, .stTextArea>div>div>textarea {
         background-color: #FAFCF5; border: 1px solid #D1C7BD; color: #33221A;
