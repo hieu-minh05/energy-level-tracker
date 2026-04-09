@@ -49,6 +49,10 @@ st.markdown("<h1 class='app-title'>ENERGY LEVEL TRACKER</h1>", unsafe_allow_html
 st.markdown("<div class='app-subtitle'>by minh</div>", unsafe_allow_html=True)
 
 # --- STATE MANAGEMENT ---
+if 'default_time' not in st.session_state:
+    # Captures the time once on initial load, stripping microseconds
+    st.session_state.default_time = datetime.now().replace(second=0, microsecond=0).time()
+
 if 'data' not in st.session_state:
     st.session_state.data = pd.DataFrame(columns=[
         'Date', 'Time', 'HourFloat', 'Energy', 'Sleep', 'SleepQ',
@@ -95,7 +99,7 @@ with tab_log:
     col1, col2 = st.columns(2)
     with col1:
         log_date = st.date_input("Date", date.today())
-        log_time = st.time_input("Exact Time", datetime.now().time())
+        log_time = st.time_input("Exact Time", value=st.session_state.default_time)
         log_energy = st.slider("Energy level right now (1-10)", 1, 10, 6)
 
     with col2:
@@ -158,7 +162,7 @@ with tab_data:
                 axis=1
             )
 
-            df_model['Circadian'] = np.sin((df_model['HourFloat'] - 6) * np.pi / 12) * 2
+            df_model['Circadian'] = np.sin((df_model['HourFloat'].astype(float) - 6) * np.pi / 12) * 2
             df_model['LowStress'] = 10 - df_model['Stress']
             df_model['ExScaled'] = df_model['Exercise'] / 30
 
