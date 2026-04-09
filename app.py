@@ -4,7 +4,6 @@ import numpy as np
 import statsmodels.api as sm
 import plotly.graph_objects as plotly_go
 from datetime import date, datetime
-import re
 
 # --- CONFIG & STYLING ---
 st.set_page_config(page_title="Energy Level Tracker", layout="centered", initial_sidebar_state="collapsed")
@@ -71,8 +70,8 @@ def parse_caffeine(caff_str):
             hour_float = hrs + (mins / 60.0)
             mg = float(mg_part.strip())
             coffees.append((hour_float, mg))
-        except:
-            pass # Ignore malformed entries
+        except ValueError:
+            pass # Ignore malformed entries gracefully
     return coffees
 
 def calc_cumulative_caffeine(eval_hour, coffees):
@@ -169,7 +168,10 @@ with tab_data:
 
             model = sm.OLS(y, X).fit()
             st.session_state.model = model
-            st.success(f"Model trained! Variance explained: {model.rsquared*100:.1f}%")
+
+            # cast to float to satisfy the type checker
+            r2_score = float(model.rsquared)
+            st.success(f"Model trained! Variance explained: {r2_score * 100:.1f}%")
 
     st.markdown("### Your Logbook")
     display_cols = ['Date', 'Time', 'Energy', 'CaffeineLog', 'FoodNotes']
@@ -203,19 +205,21 @@ with tab_schedule:
             predictions.append(min(10, max(1, pred_energy)))
 
         colors = ['#33221A' if p >= 7 else '#8C7A6B' if p >= 5 else '#D1C7BD' for p in predictions]
+
+        # We replace the kwargs with strict dictionary literals here to satisfy PyCharm
         fig = plotly_go.Figure(data=[plotly_go.Bar(
             x=[f"{h}:00" for h in hours],
             y=predictions,
-            marker_color=colors,
-            marker_line_width=0
+            marker={'color': colors, 'line': {'width': 0}}
         )])
+
         fig.update_layout(
-            margin=dict(l=0, r=0, t=30, b=0),
-            yaxis=dict(range=[0, 10], gridcolor='rgba(51,34,26,0.1)'),
-            xaxis=dict(showgrid=False),
+            margin={'l': 0, 'r': 0, 't': 30, 'b': 0},
+            yaxis={'range': [0, 10], 'gridcolor': 'rgba(51,34,26,0.1)'},
+            xaxis={'showgrid': False},
             plot_bgcolor='rgba(0,0,0,0)',
             paper_bgcolor='rgba(0,0,0,0)',
-            font=dict(family="Montserrat", color="#33221A")
+            font={'family': 'Montserrat', 'color': '#33221A'}
         )
         st.plotly_chart(fig, use_container_width=True)
     else:
