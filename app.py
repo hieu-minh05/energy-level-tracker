@@ -112,7 +112,7 @@ with tab_log:
     col3, col4 = st.columns(2)
     with col3:
         log_sleep = st.slider("Sleep duration (hrs)", 3.0, 11.0, 7.0, step=0.5)
-        log_bedtime = st.slider("Bedtime hour (24h)", 20.0, 26.0, 23.0, step=0.5)
+        log_bedtime = st.time_input("Bedtime", value=datetime.strptime("23:00", "%H:%M").time())
     with col4:
         log_sleepq = st.slider("Sleep quality (1-10)", 1, 10, 7)
         log_meal = st.slider("Meal quality (1-10)", 1, 10, 6)
@@ -136,7 +136,7 @@ with tab_log:
         new_entry = pd.DataFrame([{
             'Date': log_date, 'Time': log_time.strftime("%H:%M"), 'HourFloat': hour_float,
             'Energy': log_energy, 'Sleep': log_sleep, 'SleepQ': log_sleepq,
-            'Bedtime': log_bedtime % 24, 'CaffeineLog': log_caff_str,
+            'Bedtime': log_bedtime.strftime("%H:%M"), 'CaffeineLog': log_caff_str,
             'Meal': log_meal, 'FoodNotes': log_food_notes, 'Stress': log_stress, 'Exercise': log_exercise
         }])
         st.session_state.data = pd.concat([st.session_state.data, new_entry], ignore_index=True)
