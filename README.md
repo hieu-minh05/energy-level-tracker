@@ -19,7 +19,7 @@ Instead of guessing when you will feel your best, this tool uses your own histor
 
 **How to Run Locally**
 
-1.  Clone the repository by typing git clone [https://github.com/yourusername/energy-level-tracker.git](https://www.google.com/search?q=https://github.com/yourusername/energy-level-tracker.git) in your terminal, then type cd energy-level-tracker to enter the folder.
+1.  Clone the repository in your terminal, then type cd energy-level-tracker to enter the folder.
 2.  Set up a virtual environment to keep dependencies clean by running python -m venv .venv, and then activate it using source .venv/bin/activate on Mac or .venv\\Scripts\\activate on Windows.
 3.  Install dependencies by running pip install streamlit pandas statsmodels numpy plotly.
 4.  Run the app by launching the Streamlit server using the command python -m streamlit run app.py. The app will automatically open in your default web browser.
